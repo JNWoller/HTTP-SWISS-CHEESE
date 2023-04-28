@@ -1,60 +1,57 @@
-#pragma once
+#ifndef IPV4_H
+#define IPV4_H
+
 #include <stdlib.h>
 #include <iostream>
 #include <string> 
+#include "MessageBuffer.h"
+#include "Message.h"
 
-class IPv4Packet {
+class IPv4Packet: public Message {
 
-	uint8_t version;
-	uint8_t IHL;
-	uint8_t DSCP;
-	uint8_t ENC;
-	uint16_t totalLength;
-	uint16_t identification;
-	uint8_t flags;
-	uint16_t fragmentOffset;
-	uint8_t timeToLive;
-	uint8_t Protocol;
-	uint16_t headerChecksum;
+	uint8_t version = 0;
+	uint8_t IHL = 0;
+	uint8_t DSCP = 0;
+	uint8_t ENC = 0;
+	uint16_t totalLength = 0;
+	uint16_t identification = 0;
+	uint8_t flags = 0;
+	uint16_t fragmentOffset = 0;
+	uint8_t timeToLive = 0;
+	uint8_t Protocol = 0;
+	uint16_t headerChecksum = 0;
 	std::string sourceIP;
 	std::string destinationIP;
-	uint32_t options;
+	uint32_t options = 0;
 
-	std::string numGenerator() {
-		std::string IP;
-		for (int i = 0; i < 4; i++) {
-			int num = rand() % 255;
-			IP += std::to_string(num);
-			if (i != 3) {
-				IP += ".";
-			}
-		};
-		return IP;
-	}
+	MessageBuffer& message_buffer_;
+	Message* next_layer_;
+
+	void packetGenerator();
 
 public:
 
 	//setters
 	void setSourceIP(std::string x) {
 		sourceIP = x;
-	}
+	};
 	void setDestinationIP(std::string x) {
 		destinationIP = x;
-	}
+	};
 
 	//getters
 	std::string getSourceIP() {
 		return sourceIP;
-	}
+	};
 	std::string getDestinationIP() {
 		return destinationIP;
-	}
+	};
 
 	//constructer
-	IPv4Packet() {
-		std::string x = numGenerator();
-		setSourceIP(x);
-		std::string y = numGenerator();
-		setDestinationIP(y);
-	}
+	IPv4Packet(MessageBuffer& message_buffer, Message* next_layer);
+
+	void labelLayer();
+
 };
+
+#endif
