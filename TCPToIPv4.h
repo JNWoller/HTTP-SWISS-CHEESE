@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string> 
 #include "MessageBuffer.h"
-#include "Message.h"
 
 class IPv4Packet: public Message {
 
