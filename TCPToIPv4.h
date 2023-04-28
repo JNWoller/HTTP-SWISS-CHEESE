@@ -27,30 +27,15 @@ class IPv4Packet: public Message {
 	MessageBuffer& message_buffer_;
 	Message* next_layer_;
 
-	void packetGenerator();
 
 public:
-
-	//setters
-	void setSourceIP(std::string x) {
-		sourceIP = x;
-	};
-	void setDestinationIP(std::string x) {
-		destinationIP = x;
-	};
-
-	//getters
-	std::string getSourceIP() {
-		return sourceIP;
-	};
-	std::string getDestinationIP() {
-		return destinationIP;
-	};
 
 	//constructer
 	IPv4Packet(MessageBuffer& message_buffer, Message* next_layer);
 
 	void labelLayer();
+
+	void packetGenerator();
 
 };
 
