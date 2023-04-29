@@ -7,14 +7,14 @@
 class MessageBuffer {
 public:
     
-    void enqueue(Message* message); // Add a message to the buffer
+    void enqueue(Message* message); 
+    
+    Message* dequeue(); 
 
-    Message* dequeue(); // Remove and return the next message from the buffer
-
-    bool is_empty() const;// Check if the buffer is empty
+    bool is_empty() const;
 
 private:
-    std::queue<Message*> buffer; // Queue data structure to store Message objects
+    std::queue<Message*> buffer; 
 };
 
 #endif 
