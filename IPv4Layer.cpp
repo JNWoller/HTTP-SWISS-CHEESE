@@ -11,8 +11,8 @@ void IPv4Packet::labelLayer() {
 void IPv4Packet::packetGenerator() {
 
 	// Setting the random IP addresses
-	std::string IP;
 	for (int j = 0; j < 2; j++) {
+		std::string IP = "";
 		for (int i = 0; i < 4; i++) {
 			int num = rand() % 255;
 			IP += std::to_string(num);
@@ -21,12 +21,12 @@ void IPv4Packet::packetGenerator() {
 			}
 		};
 		if (j == 1) {
-			sourceIP = IP;
-			std::cout << "\nSource IP Address: " << sourceIP << "\n";
+			destinationIP = IP;
+			std::cout << "source IP Address: " << destinationIP << "\n";
 		}
 		else {
-			destinationIP = IP;
-			std::cout << "Destination IP Address: " << destinationIP << "\n";
+			sourceIP = IP;
+			std::cout << "\nDestination IP Address: " << sourceIP << "\n";
 		}
 	}
 
