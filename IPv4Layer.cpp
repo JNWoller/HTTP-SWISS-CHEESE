@@ -43,3 +43,118 @@ void IPv4Packet::packetGenerator() {
 
 	labelLayer();
 }
+
+//Getters
+uint8_t IPv4Packet::getVersion() {
+	return version;
+}
+
+uint8_t IPv4Packet::getIHL() {
+	return IHL;
+}
+
+uint8_t IPv4Packet::getDSCP() {
+	return DSCP;
+}
+
+uint8_t IPv4Packet::getENC() {
+	return ENC;
+}
+
+uint16_t IPv4Packet::getTotalLength() {
+	return totalLength;
+}
+
+uint16_t IPv4Packet::getIdentification() {
+	return identification;
+}
+
+uint8_t IPv4Packet::getFlags() {
+	return flags;
+}
+
+uint16_t IPv4Packet::getFragmentOffset() {
+	return fragmentOffset;
+}
+
+uint8_t IPv4Packet::getTimeToLive() {
+	return timeToLive;
+}
+
+uint8_t IPv4Packet::getProtocol() {
+	return protocol;
+}
+
+uint16_t IPv4Packet::getHeaderChecksum() {
+	return headerChecksum;
+}
+
+std::string IPv4Packet::getSourceIP() {
+	return sourceIP;
+}
+
+std::string IPv4Packet::getDestinationIP() {
+	return destinationIP;
+}
+
+uint32_t IPv4Packet::getOptions() {
+	return options;
+}
+
+
+//Setters
+void IPv4Packet::setVersion(uint8_t x) {
+	version = x;
+}
+
+void IPv4Packet::setIHL(uint8_t x) {
+	IHL = x;
+}
+
+void IPv4Packet::setDSCP(uint8_t x) {
+	DSCP = x;
+}
+
+void IPv4Packet::setENC(uint8_t x) {
+	ENC = x;
+}
+
+void IPv4Packet::setTotalLength(uint16_t x) {
+	totalLength = x;
+}
+
+void IPv4Packet::setIdentification(uint16_t x) {
+	identification = x;
+}
+
+void IPv4Packet::setFlags(uint8_t x) {
+	flags = x;
+}
+
+void IPv4Packet::setFragmentOffset(uint16_t x) {
+	fragmentOffset = x;
+}
+
+void IPv4Packet::setTimeToLive(uint8_t x) {
+	timeToLive = x;
+}
+
+void IPv4Packet::setProtocol(uint8_t x) {
+	protocol = x;
+}
+
+void IPv4Packet::setHeaderChecksum(uint16_t x) {
+	headerChecksum = x;
+}
+
+void IPv4Packet::setSourceIP(std::string x) {
+	sourceIP = x;
+}
+
+void IPv4Packet::setDestinationIP(std::string x) {
+	destinationIP = x;
+}
+
+void IPv4Packet::setOptions(uint32_t x) {
+	options = x;
+}
