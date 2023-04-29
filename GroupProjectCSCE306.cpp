@@ -3,6 +3,8 @@
 #include "TCPToIPv4.h"
 #include "MessageBuffer.h"
 #include "ethernetToWifi.h"
+#include "Serializer.h"
+#include <fstream>
 #include <iostream>
 
 int main() {
@@ -40,6 +42,20 @@ int main() {
     wifiPacket.getMac3();
 
     wifiPacket.getMac4();
+
+
+	serializer output;
+    
+	if (buff.is_empty() == false)
+	{
+		output.setWifiPacket(dynamic_cast<wifiPacket*>(buff.dequeue()));
+	}
+
+	ofstream outFile("data.txt");
+
+	outFile << output;
+    
+	outFile.close();
 
     return 0;
 }
