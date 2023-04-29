@@ -18,6 +18,10 @@ int main() {
     TCPLayer segment(mes_buffer, &app_layer);
 
     segment.generate_tcp_segment();
+	
+    IPv4Packet packet(mes_buffer, &segment);
+
+    packet.packetGenerator();
 
 	wifiPacket wifiPacket;
     
