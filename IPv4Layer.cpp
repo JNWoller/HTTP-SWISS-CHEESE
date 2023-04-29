@@ -1,6 +1,5 @@
 #include "TCPToIPv4.h"
 
-
 IPv4Packet::IPv4Packet(MessageBuffer& message_buffer, Message* next_layer)
     : message_buffer_(message_buffer), next_layer_(next_layer) {}
 
@@ -10,6 +9,8 @@ void IPv4Packet::labelLayer() {
 }
 
 void IPv4Packet::packetGenerator() {
+
+	// Setting the random IP addresses
 	std::string IP;
 	for (int j = 0; j < 2; j++) {
 		for (int i = 0; i < 4; i++) {
@@ -20,12 +21,15 @@ void IPv4Packet::packetGenerator() {
 			}
 		};
 		if (j == 1) {
-			setSourceIP(IP);
+			sourceIP = IP;
+			std::cout << "\nSource IP Address: " << sourceIP << "\n";
 		}
 		else {
-			setDestinationIP(IP);
+			destinationIP = IP;
+			std::cout << "Destination IP Address: " << destinationIP << "\n";
 		}
 	}
+
 	// Dequeue the TCP object and encapsulate it in the IPv4 object
 	if (!message_buffer_.is_empty()) {
 
