@@ -6,12 +6,12 @@
 
 class ApplicationLayer : public Message{
 public:
-    // Constructor
+
     ApplicationLayer();
 
     void labelLayer();
 
-    // Process GET and POST requests
+    
     void process_requests();
 
 private:
