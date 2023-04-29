@@ -1,7 +1,9 @@
 #include "ApplicationLayer.h"
 #include "TCPLayer.h"
 #include "MessageBuffer.h"
+#include "ethernetToWifi.h"
 #include <iostream>
+using namespace std;
 
 int main() {
 
@@ -17,5 +19,22 @@ int main() {
 
     segment.generate_tcp_segment();
 
+	wifiPacket wifiPacket;
+    
+	if (buff.is_empty() == false)
+	{
+		wifiPacket.setIPv4Packet(dynamic_cast<IPv4Packet*>(buff.dequeue()));
+	}
+	if (buff.is_empty() == true)
+	{
+		wifiPacket.enqueue(&test2);
+	}
+
+	wifiPacket.getMac1();
+	wifiPacket.getMac2();
+	wifiPacket.getMac3();
+	wifiPacket.getMac4();
+    
+    
     return 0;
 }
