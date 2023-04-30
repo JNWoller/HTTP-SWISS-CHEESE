@@ -15,4 +15,5 @@ private:
     friend ostream& operator << (ostream& os, const serializer& obj);
 };
 
-#endif // SERIALIZER_H
+#endif
+
