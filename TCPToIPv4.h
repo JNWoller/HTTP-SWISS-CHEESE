@@ -6,7 +6,7 @@
 #include <string> 
 #include "MessageBuffer.h"
 
-class IPv4Packet: public Message {
+class IPv4Packet : public Message {
 
 	uint8_t version = 0;
 	uint8_t IHL = 0;
@@ -17,7 +17,7 @@ class IPv4Packet: public Message {
 	uint8_t flags = 0;
 	uint16_t fragmentOffset = 0;
 	uint8_t timeToLive = 0;
-	uint8_t Protocol = 0;
+	uint8_t protocol = 0;
 	uint16_t headerChecksum = 0;
 	std::string sourceIP;
 	std::string destinationIP;
