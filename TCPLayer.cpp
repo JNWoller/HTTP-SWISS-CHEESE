@@ -5,15 +5,20 @@
 
 
 TCPLayer::TCPLayer(MessageBuffer& message_buffer, Message* next_layer)
+
     : message_buffer_(message_buffer), next_layer_(next_layer) {}
 
 void TCPLayer::labelLayer() {
+
     std::cout << "TCP Segment... now in the Buffer" << std::endl;
 }
 
 template <typename T>
+
 T random_number(int lower_bound, int upper_bound) {
+
     std::random_device rd;
+
     std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dist(lower_bound, upper_bound);
     return static_cast<T>(dist(gen));
@@ -54,46 +59,57 @@ void TCPLayer::generate_tcp_segment() {
 }
 
 uint16_t TCPLayer::get_source_port() const {
+    std::cout << "TCP Source Port Number: " << source_port_ << std::endl;
     return source_port_;
 }
 
 uint16_t TCPLayer::get_destination_port() const {
+    std::cout << "TCP Destination Port Number: " << destination_port_ << std::endl;
     return destination_port_;
 }
 
 uint32_t TCPLayer::get_sequence_number() const {
+    std::cout << "TCP Sequence Number: " << sequence_number_ << std::endl;
     return sequence_number_;
 }
 
 uint32_t TCPLayer::get_acknowledgement_number() const {
+    std::cout << "TCP Acknowledgement Number: " << acknowledgement_number_ << std::endl;
     return acknowledgement_number_;
 }
 
 uint8_t TCPLayer::get_data_offset() const {
+    std::cout << "TCP Data offset Value: " << data_offset_ << std::endl;
     return data_offset_;
 }
 
 uint8_t TCPLayer::get_Res() const {
+    std::cout << "TCP Res Value: " << Res_ << std::endl;
     return Res_;
 }
 
 uint8_t TCPLayer::get_Flags() const {
+    std::cout << "TCP Flag Value: " << Flags_ << std::endl;
     return Flags_;
 }
 
 uint16_t TCPLayer::get_window_size() const {
+    std::cout << "TCP Window Size Value: " << window_size_ << std::endl;
     return window_size_;
 }
 
 uint16_t TCPLayer::get_header_and_data_checksum() const {
+    std::cout << "TCP Header and Data Checksum Value: " << header_and_data_checksum_ << std::endl;
     return header_and_data_checksum_;
 }
 
 uint16_t TCPLayer::get_urgent_pointer() const {
+    std::cout << "TCP Urgent Pointer Value: " << urgent_pointer_ << std::endl;
     return urgent_pointer_;
 }
 
 uint32_t TCPLayer::get_options() const {
+    std::cout << "TCP Options Value: " << options_ << std::endl;
     return options_;
 }
 
