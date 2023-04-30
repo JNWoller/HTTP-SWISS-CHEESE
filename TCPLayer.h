@@ -7,9 +7,7 @@
 #include "Message.h"
 
 class TCPLayer : public Message {
-    
 public:
-    
     TCPLayer(MessageBuffer& message_buffer, Message* next_layer = nullptr);
     
     void generate_tcp_segment();
@@ -65,28 +63,27 @@ private:
     
     Message* next_layer_;
 
-    uint16_t source_port_;
+    uint16_t source_port_ = 0;
     
-    uint16_t destination_port_;
+    uint16_t destination_port_ = 0;
     
-    uint32_t sequence_number_;
+    uint32_t sequence_number_ = 0;
     
-    uint32_t acknowledgement_number_;
+    uint32_t acknowledgement_number_ = 0;
     
-    uint8_t data_offset_;
+    uint8_t data_offset_ = 0;
     
-    uint8_t Res_;
+    uint8_t Res_ = 0;
+   
+    uint8_t Flags_ = 0;
     
-    uint8_t Flags_;
+    uint16_t window_size_ = 0;
     
-    uint16_t window_size_;
+    uint16_t header_and_data_checksum_ = 0;
     
-    uint16_t header_and_data_checksum_;
+    uint16_t urgent_pointer_ = 0;
     
-    uint16_t urgent_pointer_;
-    
-    uint32_t options_;
+    uint32_t options_ = 0;
 };
 #endif
-
 
