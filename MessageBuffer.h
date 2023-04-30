@@ -8,7 +8,7 @@ class MessageBuffer {
 public:
     
     void enqueue(Message* message); 
-    
+
     Message* dequeue(); 
 
     bool is_empty() const;
@@ -18,4 +18,3 @@ private:
 };
 
 #endif 
-
