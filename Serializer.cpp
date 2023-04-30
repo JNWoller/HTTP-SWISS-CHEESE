@@ -5,6 +5,7 @@ using namespace std;
 
 void serializer::labelLayer() //Inheritance
 {
+    std::cout << "Physical Layer: Local text file contains serialized object in hexadecimal." << std::endl;
 }
 
 void serializer::setWifiPacket(wifiPacket* in)
@@ -12,12 +13,10 @@ void serializer::setWifiPacket(wifiPacket* in)
     packet = in;
 }
 
-
-// Output stream operator
-
-
-ostream& operator<<(ostream& outsteam, const serializer& obj) 
+ostream& operator<<(ostream& outsteam, const serializer& obj)
 {
-    outsteam << obj.packet;
+    if (obj.packet) {
+        outsteam << obj.packet;
+    }
     return outsteam;
 }
