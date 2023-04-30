@@ -1,14 +1,24 @@
 #include "TCPToIPv4.h"
 
 IPv4Packet::IPv4Packet(MessageBuffer& message_buffer, Message* next_layer)
-    : message_buffer_(message_buffer), next_layer_(next_layer) {}
+	: message_buffer_(message_buffer), next_layer_(next_layer) {}
 
 void IPv4Packet::labelLayer() {
 
-    std::cout << "IPv4 Packet... now in the Buffer" << std::endl;
+	std::cout << "IPv4 Packet... now in the Buffer" << std::endl;
 }
 
 void IPv4Packet::packetGenerator() {
+
+	if (!message_buffer_.is_empty()) {
+
+		next_layer_ = message_buffer_.dequeue();
+	}
+
+	// Enqueue the IPv4 object with the encapsulated TCP object
+	message_buffer_.enqueue(this);
+
+	labelLayer();
 
 	// Setting the random IP addresses
 	for (int j = 0; j < 2; j++) {
@@ -22,7 +32,7 @@ void IPv4Packet::packetGenerator() {
 		};
 		if (j == 1) {
 			destinationIP = IP;
-			std::cout << "source IP Address: " << destinationIP << "\n";
+			std::cout << "Source IP Address: " << destinationIP << "\n";
 		}
 		else {
 			sourceIP = IP;
@@ -31,61 +41,51 @@ void IPv4Packet::packetGenerator() {
 	}
 
 	// Dequeue the TCP object and encapsulate it in the IPv4 object
-	if (!message_buffer_.is_empty()) {
-
-		next_layer_->labelLayer();
-
-		next_layer_ = message_buffer_.dequeue();
-	}
-
-	// Enqueue the IPv4 object with the encapsulated TCP object
-	message_buffer_.enqueue(this);
-
-	labelLayer();
+	
 }
 
 //Getters
-uint8_t IPv4Packet::getVersion() {
+uint8_t IPv4Packet::getVersion() const {
 	return version;
 }
 
-uint8_t IPv4Packet::getIHL() {
+uint8_t IPv4Packet::getIHL() const{
 	return IHL;
 }
 
-uint8_t IPv4Packet::getDSCP() {
+uint8_t IPv4Packet::getDSCP() const {
 	return DSCP;
 }
 
-uint8_t IPv4Packet::getENC() {
+uint8_t IPv4Packet::getENC() const {
 	return ENC;
 }
 
-uint16_t IPv4Packet::getTotalLength() {
+uint16_t IPv4Packet::getTotalLength() const {
 	return totalLength;
 }
 
-uint16_t IPv4Packet::getIdentification() {
+uint16_t IPv4Packet::getIdentification() const {
 	return identification;
 }
 
-uint8_t IPv4Packet::getFlags() {
+uint8_t IPv4Packet::getFlags() const {
 	return flags;
 }
 
-uint16_t IPv4Packet::getFragmentOffset() {
+uint16_t IPv4Packet::getFragmentOffset() const {
 	return fragmentOffset;
 }
 
-uint8_t IPv4Packet::getTimeToLive() {
+uint8_t IPv4Packet::getTimeToLive() const {
 	return timeToLive;
 }
 
-uint8_t IPv4Packet::getProtocol() {
+uint8_t IPv4Packet::getProtocol() const {
 	return protocol;
 }
 
-uint16_t IPv4Packet::getHeaderChecksum() {
+uint16_t IPv4Packet::getHeaderChecksum() const {
 	return headerChecksum;
 }
 
@@ -97,7 +97,7 @@ std::string IPv4Packet::getDestinationIP() {
 	return destinationIP;
 }
 
-uint32_t IPv4Packet::getOptions() {
+uint32_t IPv4Packet::getOptions() const {
 	return options;
 }
 
