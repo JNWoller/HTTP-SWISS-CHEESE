@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstring>
 #include <stdlib.h>
@@ -41,7 +40,7 @@ string wifiPacket::randomMACGenerator()
 //Getter
 void wifiPacket::labelLayer() //Inheritance
 {
-	cout << "Ethernet Packet in buffer." << endl;
+	cout << "Ethernet Packet is in buffer." << endl;
 }
 IPv4Packet* wifiPacket::getPacket()
 {
