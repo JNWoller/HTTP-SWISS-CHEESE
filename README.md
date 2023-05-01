@@ -2,6 +2,6 @@
 
 Members of this team are:
 
-Joseph Woller
-Keegan Eggert
+Joseph Woller, 
+Keegan Eggert, 
 Lane Brickman
